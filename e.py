@@ -328,13 +328,6 @@ def calculate_delivery_time(product_id):
     print(f"Estimated delivery time for Product {product_id}: {delivery_time} days")
     return delivery_time
 
-@app.route('/calculate_loyalty_points/<int:product_id>', methods=['POST'])
-def calculate_loyalty_points(user_id, purchase_amount):
-    """Calculate loyalty points based on the purchase amount."""
-    points = int(purchase_amount // 10)  # 1 point for every $10 spent
-    print(f"User {user_id} earned {points} loyalty points.")
-    return points
-
 @app.route('/get_product_rating/<int:product_id>', methods=['POST'])
 def get_product_rating(product_id):
     """Fetch a random rating for a product."""
