@@ -378,12 +378,6 @@ def fetch_user_reviews(product_id):
     print(f"Reviews for Product {product_id}: {selected_reviews}")
     return selected_reviews
 
-@app.route('/add_to_whishlist/<int:product_id>', methods=['POST'])
-def add_to_wishlist(user_id, product_id):
-    """Add a product to the user's wishlist."""
-    print(f"User {user_id} added Product {product_id} to their wishlist.")
-    return True
-
 @app.route('/calculate_shipping_cost/<int:product_id>', methods=['POST'])
 def calculate_shipping_cost(distance_km, weight_kg):
     """Calculate shipping cost based on distance and weight."""
