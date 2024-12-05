@@ -280,6 +280,7 @@ def log_error(error_message):
     error_time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     print(f"[ERROR] {error_time} - {error_message}")
 
+@app.route('/calculate_user_loyalty_points/<int:product_id>', methods=['POST'])
 def calculate_user_loyalty_points(user_id, purchase_amount):
     """Calculate loyalty points based on the purchase amount."""
     points = int(purchase_amount // 10)  # 1 point for every $10 spent
@@ -357,13 +358,6 @@ def detect_fraudulent_activity(user_id):
     else:
         print(f"No suspicious activity detected for User {user_id}.")
     return suspicious
-
-@app.route('/calculate_tax/<int:product_id>', methods=['POST'])
-def calculate_tax(total_price, tax_rate=7.5):
-    """Calculate estimated tax based on the total price."""
-    tax = total_price * (tax_rate / 100)
-    print(f"Calculated tax for ${total_price:.2f}: ${tax:.2f}")
-    return tax
 
 @app.route('/send_sms/<int:product_id>', methods=['POST'])
 def send_sms(phone_number, message):
