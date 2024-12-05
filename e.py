@@ -280,11 +280,10 @@ def log_error(error_message):
     error_time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     print(f"[ERROR] {error_time} - {error_message}")
 
-@app.route('/calculate_loyalty_points/<int:product_id>', methods=['POST'])
-def calculate_loyalty_points(order_total):
-    """Calculate loyalty points based on the order total."""
-    points = int(order_total // 10)  # Earn 1 point for every $10 spent
-    print(f"Loyalty points earned: {points}")
+def calculate_user_loyalty_points(user_id, purchase_amount):
+    """Calculate loyalty points based on the purchase amount."""
+    points = int(purchase_amount // 10)  # 1 point for every $10 spent
+    print(f"User {user_id} earned {points} loyalty points.")
     return points
 
 @app.route('/verify_coupon/<int:product_id>', methods=['POST'])
